@@ -192,7 +192,7 @@ body {
 /* Z-INDEX CORREGIDO: El jugador está en 3, la pelota en 4 (para pasar por delante) */
 #jugador {
     position: absolute;
-    width: 250px; 
+    width: 200px; 
     height: auto;
     transform: translate(-50%, -50%);
     pointer-events: none;

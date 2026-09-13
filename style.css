@@ -442,15 +442,19 @@ body {
 /* 30+ puntos: Tormenta y lluvia generada por código */
 .weather-rain {
     background-color: rgba(5, 10, 30, 0.7);
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="5" height="2.5"><rect width="1" height="15" fill="rgba(255,255,255,0.4)"/></svg>');
-    background-size: 80px 80px;
-    animation: rain-fall 0.25s linear infinite;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="100"><rect x="7" y="0" width="1.5" height="40" fill="rgba(255,255,255,0.4)"/></svg>');
+    animation: rain-fall 0.6s linear infinite;
     mix-blend-mode: normal;
 }
 
 @keyframes rain-fall {
-    0% { background-position: 0px 0px; }
-    100% { background-position: 25px 100px; }
+    0% { 
+        background-position: 0px 0px; 
+    }
+    100% { 
+        /* Al mover el eje X e Y, la lluvia cae con una ligera inclinación realista */
+        background-position: -40px 400px; 
+    }
 }
 /* --- NUEVAS CLASES PARA EL INICIO --- */
 

@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const audioBtn = document.getElementById("audio-btn");
     const audioAtajar = document.getElementById("audio-atajar");
     const audioPerder = document.getElementById("audio-perder");
+    audioPerder.volume = 0.5; // Reducir volumen del sonido de perder
     const audioFin = document.getElementById("audio-fin");
 
     // Elementos del Modal de Game Over

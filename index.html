@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Feliz Cumpleaños Nico - Minijuego Arquero</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- PRECARGA DE IMÁGENES -->
+    <div style="display: none;">
+        <img src="imagenes/atajando.gif" alt="preload">
+        <img src="imagenes/parpadeando.gif" alt="preload">
+    </div>
+
+    <div id="game-container">
+        <!-- Pantalla de inicio -->
+        <!-- Pantalla de inicio -->
+        <div id="intro-screen">
+            
+            <!-- FASE 1: Mensaje de Carga -->
+            <div id="loading-phase" class="fade-in-smooth">
+                <h2 class="pixel-loading-text floating-animation">Preparando sorpresa...</h2>
+                <div class="pixel-loader"></div>
+            </div>
+
+            <!-- FASE 2: Mensaje de Cumpleaños -->
+            <div id="birthday-phase" style="display: none; flex-direction: column; align-items: center;">
+                <div class="racing-banner floating-animation">
+                    <h1 class="racing-text">¡Feliz Cumple Nico!</h1>
+                    <p class="subtitle">20/09</p>
+                    <!-- Este mensaje solo aparecerá el 20/09 -->
+                    <p id="bday-wish" class="subtitle" style="display: none; color: #ffcc00; font-weight: bold;">
+                        ¡Que pases un increíble día!
+                    </p>
+                </div>
+                <button id="next-btn" class="fade-in-smooth" style="animation-delay: 1.5s; animation-fill-mode: both;">SIGUIENTE</button>
+            </div>
+
+            <!-- FASE 3: Menú Principal -->
+            <div id="main-menu-phase" style="display: none; flex-direction: column; align-items: center; position: relative; width: 100%; height: 100%; justify-content: center;">
+                <!-- Escudo de Racing de fondo -->
+                <div class="racing-shield-bg"></div>
+                
+                <div class="menu-content fade-in-smooth">
+                    <h1 class="game-title floating-animation">¡EL MEJOR ARQUERO!</h1>
+
+                    <div class="input-section fade-in-smooth" style="animation-delay: 0.3s; animation-fill-mode: both;">
+                        <input type="text" id="player-name" placeholder="Ingresa tu nombre..." maxlength="15">
+                        <br>
+                        <button id="start-btn">JUGAR</button>
+                    </div>
+
+                    <div class="leaderboard-box fade-in-smooth" style="animation-delay: 0.6s; animation-fill-mode: both;">
+                        <h3>🏆 MEJORES PUNTAJES </h3>
+                        <ul id="leaderboard-list">
+                            <li>Cargando puntajes...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Modal de Instrucciones -->
+        <div id="instructions-modal" style="display: none;">
+            <div class="modal-content">
+                <h2>¿Cómo jugar?</h2>
+                <p>💻 <b>Compu:</b> Arrastra con el mouse<br>📱 <b>Celu:</b> Arrastra con el dedo</p>
+                <p>¡Mueve al arquero hacia la 🔴 <b>zona roja</b> para atajar la pelota antes de que llegue!</p>
+                <button id="ready-btn">¡ENTENDIDO!</button>
+            </div>
+        </div>
+
+        <!-- Área del Juego -->
+        <div id="game-area" style="display: none;">
+            <div id="weather-overlay"></div>
+            <div id="score-board">
+                Puntos: <span id="score">0</span> | Récord: <span id="high-score">0</span>
+            </div>
+            
+            <button id="stop-btn">PARAR 🛑</button>
+            <!-- Mensaje de Hito (Cada 10 puntos) -->
+            <div id="milestone-msg" style="display: none;">¡QUÉ ATAJADA! </div>
+            <!-- Mensaje de Atajada Perfecta -->
+            <div id="perfect-msg" style="display: none;">¡PERFECTO! ✦</div>
+            <!-- Flash para el "Tiempo Bala" -->
+            <div id="time-warp-flash" style="display: none;"></div>
+            <!-- Zona Roja -->
+            <div id="red-zone"></div>
+            
+            <!-- Jugador -->
+            <img id="jugador" src="imagenes/jugador.png" alt="Jugador">
+
+            <!-- Pelota -->
+            <img id="pelota" src="imagenes/pelota.png" alt="Pelota">
+        </div>
+    </div>
+
+    <!-- AUDIOS DEL JUEGO -->
+    <audio id="audio-btn" src="audios/boton.mp3"></audio>
+    <audio id="audio-atajar" src="audios/sonido_atajar.mp3"></audio>
+    <audio id="audio-perder" src="audios/sonido_perder.mp3"></audio>
+    <audio id="audio-fin" src="audios/fin-del-juego.mp3"></audio>
+
+    <!-- MODAL GAME OVER -->
+    <div id="game-over-modal" style="display: none;">
+        <div class="modal-content game-over-box">
+            <h1 id="game-over-title">✝ ¡GOLAZO! ✝</h1>
+            <p id="game-over-reason">Te metieron un gol.</p>
+            <p>Jugador: <b><span id="game-over-player"></span></b></p>
+            <div class="final-score">
+                Puntos: <span id="game-over-score">0</span>
+            </div>
+            <br>
+            <button id="restart-btn">☠ REINTENTAR</button>
+            <button id="menu-btn">VOLVER AL MENÚ</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

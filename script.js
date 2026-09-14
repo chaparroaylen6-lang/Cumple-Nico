@@ -25,12 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Transición al Menú Principal al pulsar SIGUIENTE
     if (nextBtn) {
-        nextBtn.addEventListener("click", () => {
-            playSound(audioBtn); // Sonido de botón
-            birthdayPhase.style.display = "none";
-            mainMenuPhase.style.display = "flex";
-        });
-    }
+    nextBtn.addEventListener("click", () => {
+        playSound(audioBtn); 
+        audioBackground.play().catch(e => console.log("Esperando interacción", e)); // Inicia la música aquí
+        birthdayPhase.style.display = "none";
+        mainMenuPhase.style.display = "flex";
+    });
+}
 
 
     // ==========================================
@@ -62,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const audioPerder = document.getElementById("audio-perder");
     audioPerder.volume = 0.5; // Reducir volumen del sonido de perder
     const audioFin = document.getElementById("audio-fin");
+    const audioBackground = document.getElementById("audio-background");
 
     // Elementos del Modal de Game Over
     const gameOverModal = document.getElementById("game-over-modal");
@@ -166,6 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     stopBtn.addEventListener("click", () => {
         playSound(audioBtn);
+        playSound(audioFin); // Ahora solo suena al hacer clic en PARAR
         endGame("Juego detenido manualmente.");
     });
 

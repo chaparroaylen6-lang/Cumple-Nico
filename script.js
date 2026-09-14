@@ -209,6 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
         score = 0;
         scoreElement.textContent = score;
         jugador.src = sprNormal;
+        audioBackground.play().catch(e => console.log("Esperando interacción", e));
         
         // Resetear dificultad inicial
         let nivelDificultad = Math.floor(score / 10);
@@ -411,6 +412,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function endGame(reason) {
         isPlaying = false;
+        audioBackground.pause();
+        // audioBackground.currentTime = 0; // (Opcional) Descomenta esta línea si quieres que la música empiece desde cero al reintentar
         clearInterval(parpadeoInterval);
         clearInterval(weatherInterval);
         clearTimeout(timeoutTarget);
